@@ -1,0 +1,1008 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/*bu css kodu herhangi bir HTML elementine uygulandığında belirli tarayıcı stil varsayılanlarını sıfırlar ve belirli özellikleri belirtir.*/
+*{ /* Yıldız işareti, tüm HTML elementlerini hedefler. Yna, bu CSS kuralı tüm HTML elementlerine uygulanacaktır*/
+    margin: 0;/*Tüm elementlerin dış boşluklarını sıfırlar. Bu, elementlerin içerik kutusundan dışarıya doğru hiçbir boşluk olmayacağı anlamına gelir*/
+    padding: 0;/*tüm elementlerin iç boşlukarını sıfırlar. yani element içeriği ile elementinkenarları arasında hiçbir boşluk olmayacaktır*/
+    box-sizing: border-box;/*box modelini ayralar. Bu element boyutunun içerik kutusu, kenar dolgusu ve kenarlık ile birlikte hesaplanmasını sağlar. Bu, özelikle genişlik ve yükseklik değerinin daha tutarlı olmasını sağlar*/
+    text-decoration: none;/*Tüm elementlerin metin dekorasyonunu(örneğin, alt çizgiler,çizgili metin) kaldırır. Bu genellikle bağlantıların varsayılan alt çizgisini kaldırmak için kullanılır*/
+    border: none;/*Tüm elementlerin kenarlıklarını kaldırır. Yani, hiçbir elemntin dışında kenarlık olmayacaktır.*/
+    outline: none;/*tüm elementlerin dış çizgilerini(örneğin, odaklanma durumunda görülen varsayılan tarıyıcı çerçevesi) kaldırır*/
+    scroll-behavior: smooth;/*Tüm kaydırma işlemlerinin yumuşak olmasını sağlar. (sayfa kaydırma*/
+    font-family: 'Poppins', sans-serif;/*Tüm elementlerin fontunu ayarlar. ilk olarak 'Poppins' adlı bir fontu kullanmayı dener, eğer bulunamazsa, genel bir sans-serif font kullanır. Bu, sayfanın fontunu belirli bir font ve yedek bir font olarak ayarlar*/
+}
+
+:root {/*Bu, belgenin kök elementini hedefler. Genellikle değişkenlerin tanımlandığı yer olarak kullanılır*/
+    --bg-color: #081b29;/*'--bg-color' isimli değişkene sayfa arka plan rengini atandı*/
+    --second-bg-color: #123e5c;/*--'second-bg-color' değişkenine ikincil arka plan rengi atandı*/
+    --text-color: #ededed;/*'--text-color' isimli bir değişkene metin rengi atandı*/
+    --main-color:#00abf0;/*'--main-color' isimli değişken tanımlar ve bu değişkene ana renk temasını atar*/
+}
+
+body{/*sayfanın gövdesini belirler*/
+    background: var(--bg-color);/*Sayfa arka plan rengini, önceden tanımlanan '--bg-color' değişkeninin değerine göre belirler*/
+    color: var(--text-color);/*metinin renginin önceden tanımlanan '--text-color' değişkeninin değerine göre belirler*/
+}
+
+.header {/*HTML'de '.header' sınıfını hedefler*/
+    position: fixed;/*Başlık öğesinin sabit bir konumda kalmasını sağlar, yani sayfanın yukarısında sabitlenir*/
+    top: 0;/*başlık öğesinin sayfanın üst ve left:0 ile sol köşesine yerleştirir*/
+    left: 0; 
+    width: 100%;/*başlık öğesini sayfanın tam genişliğine yarar*/
+    padding: 2rem 9%;/*başlık öğesinin iç boşluğunu belirler. Yükseklik için 2rem, genişlik için ise yüzde 9 u kullanır*/
+    background: transparent;/*Başlık öğesinin arka planını şeffaf yapar*/
+    display: flex;/*Başlık öğesini bir flex konteyner olarak ayarlar*/
+    justify-content: space-between;/*öğeleri başlık öğesinin içinde yatay olarak dağıtır ve aralarındaki boşluğu eşit olarak ayarlar*/
+    align-items: center;/*Başlık öğesinin içindeki öğeleri dikey olarak ortalar*/
+    z-index: 100;/*başlık öğesinin yığın sırasını belirler. diğer öğelerin üxerinde olmasını sağlar*/
+    transition: .3s;
+}
+
+.header.sticky {
+    background: var(--bg-color);
+}
+
+.logo {/*Bu, sınıf, başlıkta bulunan logoyu hedefler*/
+    position: relative;
+    font-size: 2.5rem;/*logo yazısının font boyutunu belirler*/
+    color: var(--text-color);/*Yazı rengini, önceden tanımlanan '--bg-color' değişkeninin değerine göre belirler*/
+   /* text-decoration: none;*/
+    font-weight: 600;/**/
+}
+
+.navbar {
+    position: relative;
+}
+
+
+.logo::before{/*Logo öğesinin önünde bulunan önceden tanımlanmış bir stil uygular*/
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    animation: showRight 1s ease forwards;
+    animation-delay: .4s;
+}
+.navbar a { /*Menü bağlantılarını hedefler*/
+    font-size: 1.7rem;/*Menü bağlantılarının font boyutunu belirler*/
+    color: var(--text-color);/*Bağlantı metin rengini, önceden tanımlanan '--text-color' değişkeninin değerine göre belirler*/
+   /* text-decoration: none;*/
+    font-weight: 500;/**/
+    margin-left: 3.srem;/*bağlantılar arasındaki boşluğu belirler*/
+    transition: .3s;/*Geçiş efektleirnin süresini belirler*/
+
+}
+
+.navbar a:hover,
+.navbar a.active{
+    color: var(--main-color);
+}
+
+#menu-icon{/*Menü simgesini hedefler*/
+    position: relative;
+    font-size: 3.6rem;
+    color: var(--text-color);/*Menü simgesinin rengini, önceden tanımlanan text color değişkeninin değerine göre belirler*/
+    cursor: pointer;/*Fare imlecinin üzerine gelindiğinde imlecin şeklini değiştirir*/
+    display: none;/*Menü simgesini varsayılan olarak gizler*/
+}
+section{/*Sayfa bölümlerini hedefler*/
+    min-height: 100vh;/*Bölümlerin minimum yüksekliğini belirler. sayfanın tamamını kaplar*/
+    padding: 10rem 9% 2rem;/*Bölüm içeriğinin dış boşluklarını belirler*/
+}
+
+.home {/*Ana sayfa bölümünü hedefler*/
+    height: 100vh;
+    background: url('home.jpeg') no-repeat ;/*Arkaplan görüntüsünü belirler*/
+    background-size: cover;/*Arkaplan görüntüsünün boyutunu ayarlar*/
+    background-position: center;/*Arkaplan görüntüsünün konumunu belirler*/
+    display: flex;/*İçeriği yatay olarak hizalar*/
+    align-items: center;/*içeriği dikey olarak ortalar*/
+    padding: 0 9%;/*içeriğin iç dolgusunu belirler*/    
+}
+
+.home-content{/*Ana sayfa içeriğini hedefler*/
+    max-width: 60rem;
+    z-index: 99;
+}
+
+.home-content h1 {/*Başlık metnini hedefler*/
+    position: relative;
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.home-content h1 span {
+    color: var(--text-color);
+}
+
+.home-content .text-animate{/*Metni animasyonlu hale getiren kısmı hedefler*/
+   position: relative;
+   width: 32.8rem; 
+}
+
+.home-content .text-animate h3{
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: transparent;
+    -webkit-text-stroke: .7px var(--main-color);
+    background-image: linear-gradient(var(--main-color), var(--main-color));
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-position: -33rem 0;
+    animation: homeBgText 6s linear infinite;
+    animation-delay: 2s;
+}
+
+.home-content .text-animate h3::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    border-right: 2px solid var(--main-color);
+    z-index: -1;
+    animation: homeCursorText 6s linear infinite;
+    animation-delay: 2s;
+}
+
+
+
+.home-content h1::before{/**/
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    animation: showRight 1s ease forwards;
+    animation-delay: 1s;
+}
+
+.home-content h3 {/*alt başlık metnini hedefler*/
+    position: relative;
+    font-size: 32px;
+    font-weight: 700;
+    color: #00abf0;
+}
+
+.home-content h3::before{/**/
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    animation: showRight 1s ease forwards;
+    animation-delay: 1.3s;
+}
+
+.home-content p {/*paragraf kısmını hedefler*/
+    position: relative;
+    font-size: 16px;
+    margin: 20px 0 40px;
+}
+.home-content p::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    animation: showRight 1s ease forwards;
+    animation-delay: 1.6s;
+}
+
+.home-content .btn-box {/*butonları hedefler*/
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 345px;
+    height: 50px;
+    
+}
+
+.home-content .btn-box::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%; 
+    background: black;
+    animation: showRight 1s ease forwards;
+    animation-delay: 1.9s;
+    z-index: 2;
+}
+
+.btn-box a {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 100%;
+    background: #00abf0;
+    border: 2px solid #00abf0;
+    border-radius: 8px;
+    font-size: 19px;
+    color: #081b29;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    z-index: 1;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.btn-box a:hover {
+    color: #00abf0;
+}
+
+
+.btn-box a:nth-child(2) {
+    background: transparent;
+    color: #00abf0;
+}
+
+.btn-box a:nth-child(2):hover {
+    color: black;
+}
+
+.btn-box a:nth-child(2)::before {
+    background: #00abf0;
+}
+
+.btn-box a::before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background:black;
+    z-index: -1;
+    transition: .5s;
+}
+
+.btn-box a:hover::before{
+    width: 100%;
+}
+
+.home-sci {/*Sosyal medya ikonlarını hedefler*/
+    position: absolute;
+    bottom: 40px;
+    width: 170px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.home-sci::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    animation: showRight 1s ease forwards;
+    animation-delay: 2.5s;
+    z-index: 2;
+}
+
+
+.home-sci a {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent ;
+    border: 2px solid #00abf0;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #00abf0;
+    text-decoration: none;
+    z-index: 1;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.home-sci a:hover {
+    color: var(--bg-color);
+}
+
+.home-sci a::before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #00abf0;
+    z-index: -1;
+    transition: .5s;
+}
+
+.home-sci a:hover::before {
+    width: 100%;
+
+
+}
+
+.home-imgHover {
+    position: absolute;
+    top: 0;
+    right: 30px;
+    width: 500px;
+    height: 100%;
+    background: transparent;
+    transition: 3s;
+    animation: manipActiveHover .1s forwards;
+    animation-delay: 4s;
+    pointer-events: none;
+}
+.about{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    background: black ;
+    padding-bottom: 6rem;
+}
+
+.heading{
+    font-size: 5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+span {
+    color: var(--main-color);
+}
+.about- img{
+    position: relative;
+    width: 25rem;
+    height: 25rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.about-img img{
+    width: 90%;
+    border-radius: 50%;
+    border: .2rem solid var(--main-color);
+}
+
+.about-img .circle-spin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border-top: .2rem solid var(--second-bg-color);
+    border-bottom: .2rem solid var(--second-bg-color);
+    border-left: .2rem solid var(--main-color);
+    border-right: .2rem solid var(--main-color);
+    animation: aboutSpinner 8s linear infinite;
+}
+
+.about-content {
+    text-align: center;
+}
+
+.about-content h3{
+    font-size: 2.6rem;
+}
+
+.about-content p {
+    font-size: 1.6rem;
+    margin: 2rem 0 3rem;
+}
+
+.btn-box.btns {
+    display: inline-block;
+    width: 15rem;
+}
+
+.btn-box.btns a::before{
+  background: black;  
+}
+
+.education {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: black ;
+    min-height: auto;
+    padding-bottom: 5rem;
+}
+
+.education .education-row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5rem;
+}
+
+.education-row .education-column{
+    flex: 1 1 40rem;
+}
+
+.education-column .title{
+    font-size: 2.5rem;
+    margin: 0 0 1.5rem 2rem;
+}
+
+.education-column .education-box {
+    border-left: .2rem solid var(--main-color);
+}
+
+.education-box .education-content{
+    position: relative;
+    padding-left: 2rem;
+}
+
+.education-box .education-content::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -1.1rem;
+    width: 2rem;
+    height: 2rem;
+    background: var(--main-color);
+    border-radius: 50%;
+}
+
+.education-content .content {
+    position: relative;
+    z-index: 1;
+    padding: 1.5rem;
+    border: .2rem solid var(--main-color);
+    border-radius: .6rem;
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+.education-content .content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: var(--second-bg-color) ;
+    z-index: -1;
+    transition: height 0.5s;
+}
+
+.education-content .content:hover::before {
+    height: 100%;
+}
+
+.education-content .content .year {
+    font-size: 1.5rem;
+    color: var(--main-color);
+    padding-bottom: .5rem;
+}
+
+.education-content .content .year i {
+    padding-right: .5rem;
+}
+
+.education-content .content h3 {
+    font-size: 2rem;
+}
+
+.education-content .content p {
+    font-size: 1.6rem;
+    padding-top: .5rem;
+}
+
+.skills {
+    min-height: auto;
+    padding-bottom: 7rem;
+    background: black;
+}
+
+.skills .skills-row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5rem;
+}
+
+.skills-row .skills-column {
+    flex: 1 1 40rem;
+}
+
+.skills-column .title {
+    font-size: 2.5rem;
+    margin: 0 0 1.5rem;
+}
+/*bu css kodu, bir beceri kutusunun tasarımını belirler*/
+.skills-box .skills-content { /*Bu, HTML içinde bir öğenin sınıfını hedefleyen bir CSS seçicisidir. '.skill-box' bir kutunun sınıfını hedeflerken, '.skill-content' içeirk alanını hedefler.*/
+    position: relative;/*öğenin konumlandırma özelliğini belirtir. 'relative' öğenin normal akış içinde kalmasını sağlar,ancak konulandırma ayarlarını etkiler*/
+    border: .2rem solid var(--main-color);/* öğenin kenarlık stilini, kalınığını ve rengini belirtir diğer kısım rengi*/
+    border-radius: .6rem;/*kenar yuvarlaklığını belirtir. Bu, köşelerin ne kadar yuvarlak olduğunu kontrol eder*/
+    padding: .5rem 1.5rem;/*öğenin içeriğinin kenarlara olan boşluğunu belirtir. soldan ve sağdan '.5rem'üstten ve alttan '1.5rem' boşluk bırakır*/
+    z-index: 1;/*öğenin yığın sırasını belirtir. Diğer öğelerden üstte olmasını sağlar*/
+    overflow: hidden;/*içeriğin taşması durmunda nasıl davranacağını belirtir. 'hidden', içeriğin öğenin sınırları dışına taşmasını engeller*/
+}
+
+.skills-box .skills-content::before {/*Bu, '.skills-content' öğesinin içine yerleştirilen bir öncelikli öğeyi hedefler.*/
+    content: "";/*öncelikli öğenin içeriğini belirtir. Bu durumda, içeriği boş bir dize olarak belirlenmiştir*/
+    position: absolute;/*öncelikli öğenin konulandırma özelliğini belirtir. 'absolute', öğeyi içinde bulunduğu en yakın konumlandırılmış üst öğeye göre konumlandırır*/
+    top: 0; /* öncelikli öğenin üst ve sol(left=0;) kenarlara olan uzaklığını belirtir. Bu, öncelikli öğenin içeriğin tamamını kaplamasını sağlar*/
+    left: 0;
+    width: 0;/*öncelikli öğ.nin genişliği*/
+    height: 100%;/*öncelikli öğ.nin yüksekliği*/
+    background: var(--bg-color);/*öncelikli öğenin arkaplan rengi*/
+    z-index: -1;/*öncelikli öğ.nin yığın sırasını belirtir. '-1', diğer öğelerden geride olmasını sağlar*/
+    transition: .5s;/*öğenin geçiş efektini belirtir*/
+}
+
+.skills-box .skills-content:hover::before {/*'skills-content' öğesinin üzerine gelindiğinde  öncelikli öğeyi hedefler*/
+    width: 100%;/*öncelikli öğenin genişiliğini belirtir. Bu, öncelikli öğenin genişliğinin tamamen öğenin içeriğini kaplayacak şekilde genişlemesini sağlar*/
+}
+
+.skills-content .progress{ /*.skills-content sınıfına ait elemanların içindeki '.pregress' sınıfına ait öğelerin */
+    padding: 1rem 0; /*padding(dolgu) özelliğini sağlar.'1rem' üst ve alt kenarlara, '0' ise sol ve sağ kenarlara dolgu ekler*/
+    /*Bu, '.progress' öğelerinin içindeki içerik ile kenarlar arasında bir boşluk bırakır*/
+    }
+
+.skills-content .progress h3 { /* '.skills-content' sınıfına sahip elemanların içindeki '.progress' sınıfına sahip öğelerin içindeki 'h3' başlıklarının stiline etki eder */
+    font-size: 1.7rem;/*ifadesi 'h3' başlıklarının metin boyutunu 1.7rem olarak ayarlar*/
+    display: flex; /*'h3' başlıklarının içindeki öğelerin flex konteyneri olarak düzenlenmesini sağlar. yani yatay ve dikey yönde esnek bir düzende */
+    justify-content: space-between;/*'h3' başlıklarının içindeki öğelerin birbirlerine göre boşluk bırakacak şekilde yatay olarak düzenlenmesini sağlar. Bu, içerik öğelerinin 
+    başlık içinde eşit olmayan genişliklere sahip olmasını sağlar */
+}    
+
+.skills-content .progress h3 span {/*'.skills-content' sınıfına ait bir öğenin içindeki '.progress' sınıfına ait öğelerin içindeki 'h3' başlıklarının içindeki 'span' öğelerinin hedfeler */
+    color: var(--text-color);
+}
+
+.skills-content .progress .bar {/* .skills-content' sınıfına sahip elemanların içindeki '.progress' sınıfına sahip öğelerin içindeki '.bar' sınıfına sahip öğeleri hedefler */
+    height: 2.5rem;/* ifadesi '.bar' öğelerinin yüksekliğini 2.5rem olarak ayarlar. Bu 'bar' öğelerinin dikey noyutunu belirler */   
+    border-radius: .6rem;/* '.bar' öğelerinin köşelerine uygulanan yuvarlak köşe yarıçapını belirler*/   
+    border: .2rem solid var(--main-color);/* ifadesi '.bar' öğelerine bir kenarlık(border) uygular. '.2rem' kalınlığında ve belirtilen renkte bir kenarlık oluşturur */
+    padding: 1rem 0;/* '.bar' öğelerinin iç dolgusunu belirler. üst ve alt kenarlara 1rem, sol ve sağ kenarlara ise 0 dolgu ekler. Bu içerik ile kenarlar arasında bir boşluk bırakır */
+}
+
+.skills-content .progress .bar span {/* bu kural, ilerleme çubuklarının doluluk sevyesni belirleyen iç 'span' elemanlarına uygulanır. Bu kural, '.skills-content' içindeki '.progress' içindeki '.bar' elemanının içindeki 'span' elemanlarını hedefler.   */
+    display: block;/*Bu özelliş, iç 'span' elemanlarının blok seviyesinde görüntülenmesini sağlar. Bu, çubukları yatay bir çizgi olarak değil, bir dikdörtgen olarak görüntülememizi sağlar.  */
+    height: 100%;
+    border-radius: .3rem;
+    background: var(--main-color);
+    
+}
+
+.skills-column:nth-child(1) .skills-content .progress:nth-child(1) .bar span {
+    width: 90%;
+}
+
+.skills-column:nth-child(1) .skills-content .progress:nth-child(2) .bar span {
+    width: 80%;
+}
+
+.skills-column:nth-child(1) .skills-content .progress:nth-child(3) .bar span {
+    width: 65%;
+}
+
+.skills-column:nth-child(1) .skills-content .progress:nth-child(4) .bar span {
+    width: 75%;
+}
+
+
+.skills-column:nth-child(2) .skills-content .progress:nth-child(1) .bar span {
+    width: 95%;
+}
+
+.skills-column:nth-child(2) .skills-content .progress:nth-child(2) .bar span {
+    width: 67%;
+}
+
+.skills-column:nth-child(2) .skills-content .progress:nth-child(3) .bar span {
+    width: 85%;
+}
+
+.skills-column:nth-child(2) .skills-content .progress:nth-child(4) .bar span {
+    width: 60%;
+}
+
+.contact{
+    min-height: auto;
+    padding-bottom: 7rem;
+    background-color: black;
+}
+
+.contact form {
+    max-width: 70rem;
+    margin: 0 auto;
+    text-align: center;
+    
+}
+
+.contact form .input-box {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.contact form .input-box .input-field {
+    position: relative;
+    width: 49%;
+    margin: .8rem 0;
+}
+
+.contact form .input-box .input-field input,
+.contact form .textarea-field textarea {
+    width: 100%;
+    height: 100%;
+    padding: 1.5rem;
+    font-size: 1.6rem;
+    color: var(--text-color);
+    background: transparent;
+    border-radius: .6rem;
+    border: .2rem solid var(--main-color);
+}
+
+
+.contact form .input-box .input-field input::placeholder,
+.contact form .textarea-field textarea::placeholder {
+    color: var(--text-color);
+}
+
+.contact form .focus {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: red;
+    border-radius: .6rem;
+    z-index: -1;
+    transition: .5s;
+}
+
+.contact form .input-box .input-field input:focus~.focus,
+.contact form .input-box .input-field input:valid~.focus,
+.contact form .textarea-field textarea:focus~.focus,
+.contact form .textarea-field textarea:valid~.focus {
+    width: 100%;
+}
+
+
+.contact form .textarea-field{
+    position: relative;
+    margin: .8rem 0 2.7rem;
+    display: flex;
+}
+
+.contact form .textarea-field textarea{
+    resize: none;
+}
+
+.contact form .btn-box.btns .btn {
+    cursor: pointer;
+}
+
+.footer {/*'.footer'(footer tagi telif hakkı yukarı dön vs için) sınıfı için bir dizi CSS stil tanımlanmıştır. */
+    display: flex;/*footer içeriğini yatayda hizalar*/
+    justify-content: space-between;/*Bu, içerik öğelerini konteynerin sağ ve sol kenarlarına doğru yayarak aralarında eşit boşluk bırakır. Yani, içerik öğelerini aralarında boşluk bırakarak kenara yaslar*/
+    align-items: center;/*Bu, içerik öğelerini dikey olarak ortalar. Yani, içerik öğelerini dikeyde merkeze hizalar*/
+    flex-wrap: wrap;/*Bu, içerik öğelerinin bir satıra sığmaması durumunda yeni satırlara kaydırmasını sağlar. Yani, içerik öğelerinin esnek bir şekilde sığmasını sağlar ve gerektiğinde satır atlamasına izin verir*/
+    padding: 2rem 9%;/*Bu, içeriğin kenarlara olan boşluklarını ayarlar. '2rem' üst ve alt, '9%' sağ ve sol kenarlar için boşluk sağlar*/
+    background: var(--bg-color);
+}
+
+.footer-text p {/*.footer-text p için stil tanımları:*/
+    font-size: 1.6rem;/*Bu, paragraf içeriğinin yazı tipi boyutunu ayarlar. Burada '1.6rem' kullanılmış, muhtemelen 16 piksel boyutuna denk*/
+}
+
+.footer-iconTop a{
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: .8rem;
+    background: var(--main-color);
+    border: .2rem solid var(--main-color);
+    border-radius: .6rem;
+    z-index: 1;
+    overflow: hidden;
+}
+
+
+.footer-iconTop a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: var(--bg-color);
+    z-index: -1;
+    transition: .5s;
+}
+
+.footer-iconTop a:hover::before {
+    width: 100%;
+}
+
+.footer-iconTop a i {
+    font-size: 2.4rem;
+    color: var(--bg-color);
+    transition: .5s;
+}
+
+footer-iconTop a:hover i {
+    color: var(--main-color);
+
+}
+
+/*ANIMATION RELOAD AND SCROLL*/
+.animate {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: yellowgreen;
+    z-index: 98;
+}
+
+.logo .animate,
+.navbar .animate,
+ #menu-icon .animate,
+ .home.show-animate .animate {
+    animation: showRight 1s ease forwards;
+    animation-delay: calc(.3s * var(--i));
+}
+
+
+
+/* BREAKPOINTS */
+@media (max-width: 1200px) {
+    html {
+        font-size: .55%;
+    }
+}
+
+@media (max-width: 991px) {
+    .header {
+        padding: 2rem 4%;
+    }
+
+    section {
+        padding: 10rem 4% 2rem;
+    }
+
+    .home {
+        padding: 0 4%;
+    }
+
+    .footer {
+        padding: 2rem 4%;
+    }
+}
+
+@media (max-widht: 768px) {
+    .header {
+        background: var(--bg-color);
+    }
+
+    #menu-icon {
+        display: block;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 100%;
+        left: -100%;
+        width: 100%;
+        padding: 1rem 4%;
+        background: var(--main-color);
+        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
+        z-index: -1;
+        transition: .25s ease;
+        transition-delay: .25s;
+    }
+    .navbar.active {
+        left: 0;
+        transition-delay: 0s;
+    }
+
+    .navbar .active-nav{
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: var(--bg-color);
+        border-top: .1rem solid rgba(0, 0, 0, .2);
+        z-index: -1;
+        transition: .25s ease;
+        transition-delay: 0s;
+    }
+
+    .navbar.active .active-nav {
+        left: 0;
+        transition-delay: .25s;
+    }
+
+
+    .navbar a {
+        display: block;
+        font-size: 2rem;
+        margin: 3rem 0;
+        transform: translateX(-20rem);
+        transition: .25s ease;
+        transition-delay: 0s;
+    }
+
+
+    .navbar.active a {
+        transform: translateX(0);
+        transition-delay: .25s;
+    }
+
+    .home-imgHover {
+        pointer-events: none;
+        background: var(--bg-color);
+        opacity: .6;
+    }
+
+}
+
+@media (max-widht: 520px){
+    html {
+        font-size: 50%;
+    }
+
+    .home-content h1 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .home-sci {
+        width: 160px;
+    }
+
+    .home-sci a {
+       width: 38px; 
+       height: 38px;
+    }
+}
+
+@media (max-widht: 462px) {
+    .home-content h1 {
+        font-size: 5.2rem;
+    }
+
+    .education {
+        padding: 10rem 4% 5rem 5%;
+    }
+ 
+    .contact form .input-box .input-field{
+        width: 100%;
+    }
+
+    .footer {
+        flex-direction: column-reverse;
+    }
+
+    .footer p {
+        margin-top: 2rem;
+        text-align: center;
+    }
+
+}
+
+@media (max-widht: 371px) {
+    .home {
+        justify-content: center;
+    }
+
+    .home-content {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .home-content h1 {
+        font-size: 5rem;
+    }
+}
+
+/* KEYFRAMES ANIMATION */
+@keyframes homeBgText {
+    0%,10%,100% {
+        background-position: -33rem 0;
+    }
+    65%,
+    85% {
+        background-position: 0 0;
+    }
+
+}
+
+@keyframes homeCursorText {
+    0%,
+    10%,
+    100% {
+        width: 0;
+    }
+    65%,
+    78%,
+    85% {
+        width: 100%;
+        opacity: 1;
+    }
+
+    75%,
+    81% {
+        opacity: 0;
+    }
+}
+
+
+@keyframes aboutSpinner {
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes showRight {
+    100% {
+        width: 0;
+    }
+}
+
+
+
+
+/*.home-imgHover:hover {
+    background: #000000;
+    opacity: .8;
+}
+
+.home-imgHover::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 120%;
+    height: 100%;
+    background: black;
+    animation: showRight 1s ease forwards;
+    animation-delay: 3s;
+    z-index: 100;
+}*/
+
+
+
+/* KEYFRAMES ANIMATION */
+@keyframes showRight{
+    100% {
+        width: 0;
+    }
+}
+
+@keyframes manipActiveHover {
+    100% {
+        pointer-events: auto;
+    }
+}
